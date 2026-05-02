@@ -99,6 +99,8 @@ export default function Navbar() {
                 Register
               </Link>
             </>
+          ) : !user ? (
+            <div className="flex h-9 w-32 animate-pulse items-center gap-2 rounded-lg bg-gray-100 px-3 py-2"></div>
           ) : (
             <div className="relative">
               <button
@@ -173,6 +175,8 @@ export default function Navbar() {
                   Register
                 </Link>
               </div>
+            ) : !user ? (
+              <div className="h-16 w-full animate-pulse rounded-lg bg-gray-100"></div>
             ) : (
               <div className="space-y-2">
                 <div className="rounded-lg bg-blue-50 px-3 py-2">

@@ -9,6 +9,7 @@ const linksByRole = {
     { to: "/patient/dashboard", label: "Dashboard", icon: Home },
     { to: "/patient/appointments", label: "Appointments", icon: CalendarDays },
     { to: "/patient/history", label: "Medical History", icon: Activity },
+    { to: "/patient/profile", label: "My Profile", icon: User },
   ],
   doctor: [
     { to: "/doctor/dashboard", label: "Dashboard", icon: Home },

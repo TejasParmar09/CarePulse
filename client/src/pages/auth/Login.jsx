@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Activity, Eye, EyeOff, Lock, Mail } from "lucide-react"
+import { Activity, ArrowLeft, Eye, EyeOff, Lock, Mail } from "lucide-react"
 import { useDispatch } from "react-redux"
 import toast from "react-hot-toast"
 import api, { getApiErrorMessage } from "../../services/api"
@@ -43,7 +43,7 @@ export default function Login() {
       const { data } = await api.post("/auth/login", { email: form.email, password: form.password })
       dispatch(setCredentials({ user: data.user, token: data.token }))
       toast.success(`Welcome back, ${data.user?.name?.split(" ")[0]}!`)
-      navigate(roleDestination[data.user?.role] || "/")
+      navigate("/")
     } catch (error) {
       const message = getApiErrorMessage(error)
       dispatch(setError(message))
@@ -56,7 +56,11 @@ export default function Login() {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md relative">
+        <Link to="/" className="absolute -top-12 left-0 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-blue-600 transition">
+          <ArrowLeft className="h-4 w-4" /> Back to Home
+        </Link>
+        
         {/* Logo */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center gap-2">

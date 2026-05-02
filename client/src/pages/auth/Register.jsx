@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react"
-import { Activity, Eye, EyeOff, Lock, Mail, Phone, User } from "lucide-react"
+import { Activity, ArrowLeft, Eye, EyeOff, Lock, Mail, Phone, User } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import toast from "react-hot-toast"
@@ -98,7 +98,7 @@ export default function Register() {
       const { data } = await api.post("/auth/register", payload)
       dispatch(setCredentials({ user: data.user, token: data.token }))
       toast.success("Registration successful! Check your email for confirmation.")
-      navigate(roleDestination[data.user?.role] || "/")
+      navigate("/")
     } catch (error) {
       const message = getApiErrorMessage(error)
       dispatch(setError(message))
@@ -111,7 +111,10 @@ export default function Register() {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-lg relative">
+        <Link to="/" className="absolute -top-12 left-0 inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-blue-600 transition">
+          <ArrowLeft className="h-4 w-4" /> Back to Home
+        </Link>
         {/* Header */}
         <div className="mb-8 text-center">
           <Link to="/" className="inline-flex items-center gap-2">
