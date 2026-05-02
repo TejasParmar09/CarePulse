@@ -18,7 +18,7 @@ const allowedOrigins = new Set([
   process.env.CLIENT_URL,
 ].filter(Boolean))
 
-app.use(  
+app.use(
   cors({
     origin: (origin, callback) => {
       // Allow server-to-server tools (no Origin header) and known frontend origins.
@@ -33,6 +33,11 @@ app.use(express.urlencoded({ extended: true }))
 
 // Serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
+
+
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Hospital API is running" })
